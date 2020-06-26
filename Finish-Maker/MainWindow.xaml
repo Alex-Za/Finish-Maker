@@ -1,0 +1,100 @@
+﻿<Window x:Class="Finish_Maker.MainWindow"
+        Name="mainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finish_Maker"
+        mc:Ignorable="d"
+        Closing="MainWindowClosing"
+        Title="FinishMaker" SizeToContent="WidthAndHeight" ResizeMode="NoResize" Background="#F9F9F9">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Style="{StaticResource OverallRowStyle}">
+            <StackPanel Margin="0 0 0 14">
+                <StackPanel Height="28" Orientation="Horizontal">
+                    <TextBox Text="{Binding UserName}" Height="25" Width="220" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Button Command="{Binding OpenSettingsCommand}" Margin="60 0 0 0" Height="20" Width="60" Content="Settings"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Style="{StaticResource RowStyle}">
+                    <Button Command="{Binding AddExportLinksCommand}" Content="ExportLinks"/>
+                    <ListBox ItemsSource="{Binding ExportLinksList}" Name="ExportLinksListBox">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" ItemHeight="25"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel Style="{StaticResource FileListStyle}" Background="#323232">
+                                    <TextBlock Text="{Binding Path=ViewPath}" ToolTip="{Binding Path=Path}"/>
+                                    <Button Command="{Binding ElementName=ExportLinksListBox, Path=DataContext.DeleteCommand}" CommandParameter="{Binding }"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Style="{StaticResource RowStyle}">
+                    <Button Command="{Binding AddOldExportLinksCommand}" Content="ExportLinks(Old)" FontSize="10"/>
+                    <ListBox ItemsSource="{Binding OldExportLinksList}" Name="OldExportLinksListBox">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" ItemHeight="28"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel Style="{StaticResource FileListStyle}" Background="#323232">
+                                    <TextBlock Text="{Binding Path=ViewPath}" ToolTip="{Binding Path=Path}"/>
+                                    <Button Command="{Binding ElementName=OldExportLinksListBox, Path=DataContext.DeleteCommand}" CommandParameter="{Binding }"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Style="{StaticResource RowStyle}">
+                    <Button Command="{Binding AddChtDuplicatesCommand}" Content="Cht Duplicates" FontSize="11"/>
+                    <ListBox ItemsSource="{Binding ChtDuplicatesList}" Name="ChtDuplicatesListBox">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" ItemHeight="28"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel Style="{StaticResource FileListStyle}" Background="#323232">
+                                    <TextBlock Text="{Binding Path=ViewPath}" ToolTip="{Binding Path=Path}"/>
+                                    <Button Command="{Binding ElementName=ChtDuplicatesListBox, Path=DataContext.DeleteCommand}" CommandParameter="{Binding }"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="0 8 0 0">
+                <StackPanel Style="{StaticResource RowStyle}">
+                    <ProgressBar Value="{Binding Progress}" Height="28" Width="263" Margin="0 0 6 0"/>
+                    <Button Command="{Binding Start}" Content="{Binding StartButton}"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <DockPanel DataContext="{Binding ConsoleTextProperty}" Grid.Row="1" Margin="10 0 10 10">
+            <TextBox Text="{Binding TheText}" Foreground="{Binding TheColor}" Padding="5" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" MinHeight="60" MaxHeight="240" MaxWidth="420" FontSize="14" Background="#323232"/>
+        </DockPanel>
+        <Canvas>
+            <Button Command="{Binding FullScreenCommand}" Height="10" Width="10" Canvas.Bottom="-11" Canvas.Left="11" Background="AntiqueWhite">
+                <Image Source="img/full_screen4.png" Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </Canvas>
+    </Grid>
+</Window>

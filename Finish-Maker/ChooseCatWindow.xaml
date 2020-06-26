@@ -1,0 +1,34 @@
+﻿<Window x:Class="Finish_Maker.ChooseCatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finish_Maker"
+        mc:Ignorable="d"
+        Name="ChooseCategoryWindow"
+        Closing="ChooseCatWindowClosing"
+        Title="ChooseCatWindow" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Grid Margin="5">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Name="finishFilesPanel" Style="{StaticResource CatStyle}" Orientation="Horizontal">
+
+                </StackPanel>
+                <Button Click="AddNewFinish" Style="{StaticResource ArrowButtonStyle}" Height="21" Width="13">
+                    <Path Style="{StaticResource ArrowIconButtonStyle}" Height="14.974" Stretch="Fill" Width="6.889">
+                        <Path.RenderTransform>
+                            <RotateTransform Angle="180" />
+                        </Path.RenderTransform>
+                    </Path>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 0">
+                    <Button Click="Cancel" Content="Cancel" Width="40" Height="20" Margin="0 0 10 0"/>
+                    <Button Click="Save" Content="Save" Width="40" Height="20"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>

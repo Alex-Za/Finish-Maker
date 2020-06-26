@@ -1,0 +1,12 @@
+﻿<Window x:Class="Finish_Maker.ConsoleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finish_Maker"
+        mc:Ignorable="d"
+        Title="ConsoleWindow" Name="ConsoleWIndow" Height="393.75" Width="654.209">
+    <Grid>
+        <TextBox Text="{Binding ConsoleText}" Foreground="{Binding Color}" Padding="5" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" FontSize="14" Background="#323232"/>
+    </Grid>
+</Window>
